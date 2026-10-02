@@ -4,28 +4,38 @@
 
 ## Problem
 
-Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+Given `n` pairs of parentheses, write a function to *generate all combinations of well-formed parentheses*.
 
  
-Example 1:
+
+**Example 1:**
+
+```
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]
-Example 2:
+
+```
+
+**Example 2:**
+
+```
 Input: n = 1
 Output: ["()"]
 
+```
+
  
-Constraints:
 
+**Constraints:**
 
-	1 <= n <= 8
+- 1 <= n <= 8
 
 ## Solution
 
 **Language:** C++  
-**Runtime:** 3 ms (beats 67.74%)  
-**Memory:** 15.5 MB (beats 64.61%)  
-**Submitted:** 2026-09-10T04:30:26.942Z  
+**Runtime:** 3 ms (beats 67.20%)  
+**Memory:** 15.7 MB (beats 35.81%)  
+**Submitted:** 2026-10-02T17:16:35.200Z  
 
 ```cpp
 class Solution {
