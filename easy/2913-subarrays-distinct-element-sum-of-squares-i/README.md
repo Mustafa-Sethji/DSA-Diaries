@@ -54,9 +54,9 @@ The sum of the squares of the distinct counts in all subarrays is equal to 12 + 
 ## Solution
 
 **Language:** C++  
-**Runtime:** 37 ms (beats 31.70%)  
-**Memory:** 36.4 MB (beats 58.72%)  
-**Submitted:** 2026-10-15T14:32:40.035Z  
+**Runtime:** 43 ms (beats 14.25%)  
+**Memory:** 36.3 MB (beats 58.72%)  
+**Submitted:** 2026-10-15T14:35:42.597Z  
 
 ```cpp
 class Solution {
