@@ -53,19 +53,15 @@ Only `k = 0` allows sorting since no greater `k` allows the required swaps where
 ## Solution
 
 **Language:** C++  
-**Runtime:** 279 ms (beats 6.67%)  
-**Memory:** 245.8 MB (beats 5.71%)  
-**Submitted:** 2026-10-23T11:23:04.981Z  
+**Runtime:** 1 ms (beats 54.29%)  
+**Memory:** 152.6 MB (beats 92.38%)  
+**Submitted:** 2026-10-23T11:23:12.919Z  
 
 ```cpp
 class Solution {
 public:
     int sortPermutation(vector<int>& nums) {
         int n=nums.size();
-        unordered_map<int,int>mp;
-        for(int i=0;i<n;i++){
-            mp[nums[i]]=i;
-        }
         int ans=-1;
         for(int i=0;i<n;i++){
             if(nums[i]!=i){
