@@ -43,9 +43,9 @@ Explanation: There is no day when Alice and Bob are in Rome together, so we retu
 ## Solution
 
 **Language:** C++  
-**Runtime:** 1 ms (beats 12.12%)  
-**Memory:** 8.1 MB (beats 38.18%)  
-**Submitted:** 2026-10-24T05:17:02.638Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 8.1 MB (beats 20.00%)  
+**Submitted:** 2026-10-24T05:17:11.221Z  
 
 ```cpp
 class Solution {
