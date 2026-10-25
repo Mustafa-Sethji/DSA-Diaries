@@ -52,9 +52,9 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 ## Solution
 
 **Language:** C++  
-**Runtime:** 1 ms (beats 5.03%)  
+**Runtime:** 0 ms (beats 100.00%)  
 **Memory:** 11.7 MB (beats 86.31%)  
-**Submitted:** 2026-10-25T11:52:20.860Z  
+**Submitted:** 2026-10-25T11:52:27.901Z  
 
 ```cpp
 /**
