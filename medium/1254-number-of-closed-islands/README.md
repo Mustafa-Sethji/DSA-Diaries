@@ -51,44 +51,39 @@ Output: 2
 ## Solution
 
 **Language:** C++  
-**Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 13.9 MB (beats 41.60%)  
-**Submitted:** 2026-09-18T08:23:39.725Z  
+**Runtime:** 2 ms (beats 47.42%)  
+**Memory:** 13.8 MB (beats 50.98%)  
+**Submitted:** 2026-10-25T06:43:36.475Z  
 
 ```cpp
 class Solution {
 public:
-    int n,m;
+    int n;
+    int m;
+    vector<vector<int>> vis;
+    bool dfs(int i,int j,vector<vector<int>>&grid,vector<vector<int>>&vis){
+        if(i>=n || i<0 || j>=m || j<0)return false;
+        if(grid[i][j]==1)return true;
+        grid[i][j]=1;
 
-    bool dfs(int r,int c,vector<vector<int>>&vis,vector<vector<int>>&grid){
+        bool top=dfs(i-1,j,grid,vis);
+        bool right=dfs(i,j+1,grid,vis);
+        bool down=dfs(i+1,j,grid,vis);
+        bool left=dfs(i,j-1,grid,vis);
 
-        if( r>=n || r<0 || c<0 || c>=m )return false;
-
-        if(grid[r][c]==1)
-            return true;
-        if(vis[r][c])
-            return true;
-
-        vis[r][c]=1;
-
-        bool left_bound=dfs(r,c-1,vis,grid);
-        bool right_bound=dfs(r,c+1,vis,grid);
-        bool up_bound=dfs(r-1,c,vis,grid);
-        bool down_bound=dfs(r+1,c,vis,grid);
-
-        return (left_bound && right_bound && up_bound && down_bound); 
+        return (top && left && right && down);
     }
     int closedIsland(vector<vector<int>>& grid) {
         n=grid.size();
         m=grid[0].size();
-        int region=0;
-        vector<vector<int>>vis(n,vector<int>(m,0));
+        int island=0;
+        vis.assign(n,vector<int>(m,0));
         for(int i=1;i<n-1;i++){
             for(int j=1;j<m-1;j++){
-                if(grid[i][j]==0 && !vis[i][j]  && dfs(i,j,vis,grid) )region++;
+                if(!vis[i][j] && grid[i][j]==0 && dfs(i,j,grid,vis)) island++;
             }
         }
-        return region;
+        return island;
     }
 };
 ```
