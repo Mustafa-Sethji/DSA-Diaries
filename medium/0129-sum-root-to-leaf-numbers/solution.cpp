@@ -11,19 +11,15 @@
  */
 class Solution {
 public:
-    int Total_sum;
-    void path_leaf(TreeNode*root,int curr){
-        if(root->left==NULL && root->right==NULL){
-            Total_sum+=10*curr+root->val;
-            return;
-        }
-        if(root->left)path_leaf(root->left,10*curr+root->val);
-        if(root->right)path_leaf(root->right,10*curr+root->val);
-        return;
+    int solve(TreeNode* root,int value){
+        if(!root->left && !root->right) return value+root->val;
+
+        int left=0,right=0;
+        if(root->left)left=solve(root->left,(value+root->val)*10);
+        if(root->right)right=solve(root->right,(value+root->val)*10);
+        return left+right;
     }
     int sumNumbers(TreeNode* root) {
-        Total_sum=0;
-        path_leaf(root,0);
-        return Total_sum;
+        return solve(root,0);
     }
 };
