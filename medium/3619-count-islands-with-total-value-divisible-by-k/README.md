@@ -46,43 +46,40 @@ The grid contains six islands, each with a total value that is divisible by 3.
 ## Solution
 
 **Language:** C++  
-**Runtime:** 989 ms (beats 5.14%)  
-**Memory:** 105.6 MB (beats 37.69%)  
-**Submitted:** 2026-10-26T18:06:57.072Z  
+**Runtime:** 22 ms (beats 89.25%)  
+**Memory:** 78.7 MB (beats 89.03%)  
+**Submitted:** 2026-10-27T02:27:58.405Z  
 
 ```cpp
 class Solution {
 public:
+    long long dfs(vector<vector<int>>& grid, int i, int j) {
+        if (i < 0 || j < 0 || i >= grid.size() ||
+            j >= grid[0].size() || grid[i][j] == 0)
+            return 0;
+
+        long long sum = grid[i][j];
+        grid[i][j] = 0;
+
+        sum += dfs(grid, i + 1, j);
+        sum += dfs(grid, i - 1, j);
+        sum += dfs(grid, i, j + 1);
+        sum += dfs(grid, i, j - 1);
+
+        return sum;
+    }
+    
     int countIslands(vector<vector<int>>& grid, int k) {
-        int m = grid.size();
-        int n = grid[0].size();
+        int m = grid.size(), n = grid[0].size();
         int ans = 0;
-
-        function<long long(int, int)> dfs = [&](int i, int j) -> long long {
-            if (i < 0 || i >= m || j < 0 || j >= n ||
-                grid[i][j] == 0) {
-                return 0;
-            }
-
-            long long sum = grid[i][j];
-            grid[i][j] = 0; // Mark visited
-
-            sum += dfs(i + 1, j);
-            sum += dfs(i - 1, j);
-            sum += dfs(i, j + 1);
-            sum += dfs(i, j - 1);
-
-            return sum;
-        };
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] > 0) {
-                    long long sum = dfs(i, j);
+                    long long sum = dfs(grid, i, j);
 
-                    if (sum % k == 0) {
+                    if (sum % k == 0)
                         ans++;
-                    }
                 }
             }
         }
