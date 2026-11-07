@@ -52,9 +52,9 @@ For queries[1]: Only server with id 3 gets no request in the duration [2,4].
 ## Solution
 
 **Language:** C++  
-**Runtime:** 116 ms (beats 33.62%)  
-**Memory:** 212.7 MB (beats 53.27%)  
-**Submitted:** 2026-11-07T05:50:24.136Z  
+**Runtime:** 110 ms (beats 37.99%)  
+**Memory:** 212.9 MB (beats 51.53%)  
+**Submitted:** 2026-11-07T05:50:32.979Z  
 
 ```cpp
 
