@@ -52,59 +52,54 @@ For queries[1]: Only server with id 3 gets no request in the duration [2,4].
 ## Solution
 
 **Language:** C++  
-**Runtime:** 109 ms (beats 38.96%)  
-**Memory:** 212.9 MB (beats 52.81%)  
-**Submitted:** 2026-11-06T18:30:15.122Z  
+**Runtime:** 116 ms (beats 33.62%)  
+**Memory:** 212.7 MB (beats 53.27%)  
+**Submitted:** 2026-11-07T05:50:24.136Z  
 
 ```cpp
+
 class Solution {
 public:
-    vector<int> countServers(int n, vector<vector<int>>& logs, int x, vector<int>& queries) {
-        int m = logs.size();
+    vector<int> countServers(int n, vector<vector<int>>& logs,int x, vector<int>& queries) {
+        for(int i=0;i<logs.size();i++){
+            int temp=logs[i][0];
+            logs[i][0]=logs[i][1];
+            logs[i][1]=temp;
+        }
+        sort(logs.begin(),logs.end());
+        for(int i=0;i<logs.size();i++){
+            int temp=logs[i][0];
+            logs[i][0]=logs[i][1];
+            logs[i][1]=temp;
+        }
+        vector<pair<int,int>>timeIndex(queries.size());
 
-        auto lambda = [](vector<int>& vec1, vector<int>& vec2) {
-            return vec1[1] < vec2[1];
-        };
+        for(int i=0;i<queries.size();i++) timeIndex[i]={queries[i],i};
+        
+        sort(timeIndex.begin(),timeIndex.end());
+        vector<int>ans(queries.size());
 
-        sort(begin(logs), end(logs), lambda);
-
-        int q = queries.size();
-        vector<pair<int,int>> timeIndex(q);     // {time, original idx}
-        for (int i = 0; i < q; i++) 
-            timeIndex[i] = {queries[i], i};
-
-        sort(begin(timeIndex), end(timeIndex));
-
-        unordered_map<int,int> mp;              //count unique servers in the window
-        vector<int> result(q);
-
-        int i = 0, j = 0;
-        for (auto [curtime, ind] : timeIndex) {
-            int start = curtime - x;
-            int end   = curtime;
-
-            // right expand: time <= end
-            while (j < m && logs[j][1] <= end) {
+        int i=0,j=0;
+        unordered_map<int,int>mp;
+        for( auto it:timeIndex){
+            int start=it.first-x;
+            int end=it.first;
+            while(j<logs.size() && logs[j][1]<=end){
                 mp[logs[j][0]]++;
                 j++;
             }
-
-            // left shrink: time < start
-            while (i < m && logs[i][1] < start) {
+            while(i<logs.size() && logs[i][1]<start){
                 mp[logs[i][0]]--;
-                if (mp[logs[i][0]] == 0) 
-                    mp.erase(logs[i][0]);
-                
+                if(mp[logs[i][0]]==0)mp.erase(logs[i][0]);
                 i++;
             }
-
-            //mp.size() unique servers got requests. So, n - mp.size() did not recieve requests 
-            result[ind] = n - mp.size();
+            ans[it.second]=n-mp.size();
         }
+        return ans;
 
-        return result;
     }
 };
+
 ```
 
 ---
