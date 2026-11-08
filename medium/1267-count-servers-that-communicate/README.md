@@ -49,15 +49,13 @@ Explanation: The two servers in the first row can communicate with each other. 
 ## Solution
 
 **Language:** C++  
-**Runtime:** 52 ms (beats 5.16%)  
-**Memory:** 30 MB (beats 8.36%)  
-**Submitted:** 2026-11-08T04:40:01.441Z  
+**Runtime:** 12 ms (beats 16.73%)  
+**Memory:** 29.1 MB (beats 12.81%)  
+**Submitted:** 2026-11-08T04:44:19.296Z  
 
 ```cpp
 class Solution {
 public:
-    vector<int>d_row={1,-1,0,0};
-    vector<int>d_col={0,0,1,-1};
     vector<int>vis_row;
     vector<int>vis_col;
     int n,m;
@@ -65,14 +63,21 @@ public:
         if(grid[r][c]==0) return 0;
         vis[r][c]=1;
         int cnt=1;
-        for(int i=0;i<n;i++){
-            if(!vis_row[r] && i!=r && !vis[i][c] && grid[i][c]==1){
-                cnt+=dfs_counter(i,c,vis,grid);
+        if(!vis_col[c]){
+            vis_col[c] = 1;
+            for(int i=0;i<n;i++){
+                if(i!=r && !vis[i][c] && grid[i][c]==1){
+                    cnt+=dfs_counter(i,c,vis,grid);
+                }
             }
         }
-        for(int i=0;i<m;i++){
-            if(!vis_col[c] && i!=c && !vis[r][i] && grid[r][i]==1){
-                cnt+=dfs_counter(r,i,vis,grid);
+
+        if(!vis_row[r]){
+            vis_row[r]=1;
+            for(int i=0;i<m;i++){
+                if(i!=c && !vis[r][i] && grid[r][i]==1){
+                    cnt+=dfs_counter(r,i,vis,grid);
+                }
             }
         }
 
