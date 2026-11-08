@@ -1,7 +1,5 @@
 class Solution {
 public:
-    vector<int>d_row={1,-1,0,0};
-    vector<int>d_col={0,0,1,-1};
     vector<int>vis_row;
     vector<int>vis_col;
     int n,m;
@@ -9,14 +7,21 @@ public:
         if(grid[r][c]==0) return 0;
         vis[r][c]=1;
         int cnt=1;
-        for(int i=0;i<n;i++){
-            if(!vis_row[r] && i!=r && !vis[i][c] && grid[i][c]==1){
-                cnt+=dfs_counter(i,c,vis,grid);
+        if(!vis_col[c]){
+            vis_col[c] = 1;
+            for(int i=0;i<n;i++){
+                if(i!=r && !vis[i][c] && grid[i][c]==1){
+                    cnt+=dfs_counter(i,c,vis,grid);
+                }
             }
         }
-        for(int i=0;i<m;i++){
-            if(!vis_col[c] && i!=c && !vis[r][i] && grid[r][i]==1){
-                cnt+=dfs_counter(r,i,vis,grid);
+
+        if(!vis_row[r]){
+            vis_row[r]=1;
+            for(int i=0;i<m;i++){
+                if(i!=c && !vis[r][i] && grid[r][i]==1){
+                    cnt+=dfs_counter(r,i,vis,grid);
+                }
             }
         }
 
