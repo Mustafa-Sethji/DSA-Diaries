@@ -77,9 +77,9 @@ The optimal path is `0 → 3` with total cost = `costs[3] + (3 - 0)2 = 3 + 9 = 1
 ## Solution
 
 **Language:** C++  
-**Runtime:** 52 ms (beats 12.49%)  
-**Memory:** 185.6 MB (beats 21.91%)  
-**Submitted:** 2026-11-10T17:01:47.405Z  
+**Runtime:** 49 ms (beats 15.32%)  
+**Memory:** 185.6 MB (beats 22.70%)  
+**Submitted:** 2026-11-10T17:02:01.531Z  
 
 ```cpp
 //Approach-1 (Recursion + Memo)
