@@ -57,9 +57,9 @@ s becomes "0" + "0" + "0" = "000", whose length is equal to k, so we return "000
 ## Solution
 
 **Language:** C++  
-**Runtime:** 2 ms (beats 11.64%)  
+**Runtime:** 1 ms (beats 27.40%)  
 **Memory:** 9.1 MB (beats 40.41%)  
-**Submitted:** 2026-11-16T09:55:10.807Z  
+**Submitted:** 2026-11-16T09:55:18.940Z  
 
 ```cpp
 
