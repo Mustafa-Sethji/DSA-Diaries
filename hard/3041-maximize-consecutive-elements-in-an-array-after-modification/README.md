@@ -45,9 +45,9 @@ Explanation: The maximum consecutive elements that we can select is 1.
 ## Solution
 
 **Language:** C++  
-**Runtime:** 211 ms (beats 74.76%)  
+**Runtime:** 219 ms (beats 70.87%)  
 **Memory:** 120.2 MB (beats 66.99%)  
-**Submitted:** 2026-11-20T14:57:49.779Z  
+**Submitted:** 2026-11-20T14:57:57.923Z  
 
 ```cpp
 class Solution {
